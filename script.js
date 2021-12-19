@@ -59,8 +59,8 @@ function update(time) {
 }
 
 function handleLose(){
-    const rect = ball.rect()
-    if (rect.right >= window.innerWidth) {
+    const ballRect = ball.rect()
+    if (ballRect.right >= window.innerWidth) {
         playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1
     } else {
         computerScoreElem.textContent = parseInt(computerScoreElem.textContent) + 1
@@ -70,8 +70,8 @@ function handleLose(){
     console.log("you lose")
 }
 function isLose() {
-    const rect = ball.rect()
-    return (rect.right >= window.innerWidth || rect.left <= 0)
+    const ballRect = ball.rect()
+    return (ballRect.right >= window.innerWidth || ballRect.left <= 0)
 }
 
 document.addEventListener("mousemove", e => {

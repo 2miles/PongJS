@@ -12,7 +12,8 @@ export default class Ball {
         // center the ball on the screen
         this.x = 50
         this.y = 50
-        this.direction = {x: 0} //just not undef.
+        //this.heading = 0
+        this.direction = {x: 0, y: 0} //just not undef.
 
         // while the balls starting angle is decent.. 
         while (Math.abs(this.direction.x) <= .2 || 
@@ -45,9 +46,9 @@ export default class Ball {
         this.y += this.direction.y * this.velocity * delta
         // increase velocity
         this.velocity += VELOCITY_INCREASE * delta
-        const rect = this.rect()
+        const ballRect = this.rect()
         // change ball direction when hitting top or bottom wall
-        if (rect.bottom >= window.innerHeight || rect.top <= 0) {
+        if (ballRect.bottom >= window.innerHeight || ballRect.top <= 0) {
             this.direction.y *= -1
         }
         /*
@@ -56,10 +57,10 @@ export default class Ball {
         }
          */
         
-        if (isCollision(paddleRects[0],rect)) {
+        if (isCollision(paddleRects[0],ballRect)) {
             this.direction.x *= -1  
         }
-        if (isCollision(paddleRects[1],rect)) {
+        if (isCollision(paddleRects[1],ballRect)) {
             this.direction.x *= -1  
         }
     }
@@ -70,7 +71,7 @@ export default class Ball {
 }
 
 
-// return random Int between min and max
+// return random Whole number between min and max
 function randomNumberBetween(min, max) {
     return Math.random() * (max - min) + min
 }
