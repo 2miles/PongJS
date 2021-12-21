@@ -12,16 +12,17 @@ export default class Ball {
         // center the ball on the screen
         this.x = 50
         this.y = 50
-        //this.heading = 0
-        this.direction = {x: 0, y: 0} //just not undef.
+        this.heading = 0
+        this.direction = {x: 0} //just not undef.
 
         // while the balls starting angle is decent.. 
         while (Math.abs(this.direction.x) <= .2 || 
                Math.abs(this.direction.y) >= .9) 
         {
             //
-            const heading = randomNumberBetween(0, 2 * Math.PI) //returns radians
-            this.direction = { x: Math.cos(heading), y: Math.sin(heading) }
+            this.heading = randomNumberBetween(0, 2 * Math.PI) //returns radians
+            this.direction = { x: Math.cos(this.heading), y: Math.sin(this.heading) }
+
         }
         this.velocity = INITIAL_VELOCITY
     }
