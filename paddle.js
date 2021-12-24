@@ -12,6 +12,13 @@ export default class Paddle {
     set position(value) {
         this.paddleElem.style.setProperty("--position", value)
     }
+    get topOfPaddle() {
+        return this.paddleElem.getBoundingClientRect().top
+    }
+    get bottomOfPaddle() {
+        return this.paddleElem.getBoundingClientRect().bottom
+    }
+
     rect() {
         return this.paddleElem.getBoundingClientRect()
     }
