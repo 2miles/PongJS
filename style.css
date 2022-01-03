@@ -25,7 +25,11 @@ body {
     top: calc(var(--position) * 1vh);
     transform: translateY(-50%);
     width: 1vh;
-    height: 10vh;
+    height: 20vh;
+    /*
+    screen.height = 100vh
+    heightOfPaddle = screen.height * paddle.height
+    */
 }
     
 /*how far paddles are from the edges of the window */
@@ -37,7 +41,6 @@ body {
 }
 
 .ball {
-
     /* the center by default */
     --x: 50;
     --y: 50;
@@ -52,6 +55,7 @@ body {
     height: 2.5vh;
 }
 
+
 .score {
     display: flex;
     justify-content: center;
@@ -59,7 +63,6 @@ body {
     font-size: 7vh;
     color: var(--foreground-color);
 }
-
 .score > * {
     flex-grow: 1;  /*exactly half of screen is taken by each score */
     flex-basis: 0;
@@ -67,9 +70,7 @@ body {
     margin: 1vh 0;
     opacity: .5;
 }
-
 .score > :first-child {
     text-align: right;
     border-right: .5vh solid var(--foreground-color);
 }
-
