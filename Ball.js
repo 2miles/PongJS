@@ -1,3 +1,4 @@
+
 const INITIAL_VELOCITY = .025
 const VELOCITY_INCREASE = 0.00001
 
@@ -47,7 +48,7 @@ export default class Ball {
         this.y += this.direction.y * this.velocity * delta
         // increase velocity
         this.velocity += VELOCITY_INCREASE * delta
-        const ballRect = this.rect()
+        const ballRect = this.getRect()
         // change ball direction when hitting top or bottom wall
         if (ballRect.bottom >= window.innerHeight || ballRect.top <= 0) {
             this.direction.y *= -1
@@ -80,4 +81,8 @@ function randomNumberBetween(min, max) {
 function isCollision(rect1, rect2) {
     return rect1.left <= rect2.right && rect1.right >= rect2.left &&
            rect1.top <= rect2.bottom && rect1.bottom >= rect2.top
+}
+
+function calculateCenter(rect){
+    return (rect.bottom - rect.top) / 2 + rect.bottom
 }

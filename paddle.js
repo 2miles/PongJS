@@ -3,6 +3,8 @@ const SPEED = .02
 export default class Paddle {
     constructor(paddleElem) {
         this.paddleElem = paddleElem
+        //div width: vh
+        //div height: vh
         this.position = 50
         this.reset()
     }
