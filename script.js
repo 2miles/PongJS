@@ -38,8 +38,11 @@ const computerScoreElem = document.getElementById("computer-score")
  */
 
 
-//calls update every time somthing on the screen changes
-let lastTime //null
+//update() gets called every time somthing on the screen changes
+//calls paddle.updade and ball.update
+//changes background hue
+//checks if anyone lost
+let lastTime //initialized to null
 function update(time) {
     if (lastTime != null) {
         //actual time between this tick and last
@@ -59,7 +62,7 @@ function update(time) {
 }
 
 function handleLose(){
-    const ballRect = ball.rect()
+    const ballRect = ball.getRect()
     if (ballRect.right >= window.innerWidth) {
         playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1
     } else {
@@ -70,15 +73,16 @@ function handleLose(){
     console.log("you lose")
 }
 function isLose() {
-    const ballRect = ball.rect()
+    const ballRect = ball.getRect()
     return (ballRect.right >= window.innerWidth || ballRect.left <= 0)
 }
 
 document.addEventListener("mousemove", e => {
     //convert pixels to percentages
     playerPaddle.position = (e.y / window.innerHeight) * 100
+    
+                             
 })
 
 window.requestAnimationFrame(update)
-
 
