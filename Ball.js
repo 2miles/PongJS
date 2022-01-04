@@ -84,5 +84,5 @@ function isCollision(rect1, rect2) {
 }
 
 function calculateCenter(rect){
-    return (rect.bottom - rect.top) / 2 + rect.bottom
+    return (rect.bottom - rect.top) / 2 + rect.top
 }
