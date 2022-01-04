@@ -59,15 +59,48 @@ export default class Ball {
         }
          */
         
-        if (isCollision(paddleRects[0],ballRect)) {
+
+        //fix this function
+////////////////////////////////////////////
+        if (isCollision(paddleRects[0], ballRect)) {
+            //multiply the heading by the balls distance from the center as
+            //a percentage of the paddle width
+            const paddleCenter = calculateCenter(paddleRects[0]);
+            let ballHeight = this.y / 100 * window.innerHeight
+            let paddleLength = paddleRects[0].bottom -  paddleRects[0].top
+            let collisionDistFromCenter = paddleCenter - ballHeight;
+            let accuracy;
+            if (collisionDistFromCenter / paddleLength < 0) {
+                accuracy = (collisionDistFromCenter / paddleLength * 2) - 1
+            } else {
+                accuracy = (collisionDistFromCenter / paddleLength * 2) + 1
+            }
+
+            console.log(`paddleCenter: ${paddleCenter}`)
+            console.log(`paddleTop:    ${paddleRects[0].top}`)
+            console.log(`paddleBottom: ${paddleRects[0].bottom}`)
+            console.log(`ball.y: ${ballHeight}`)
+            console.log(`distance from center: ${collisionDistFromCenter}`);
+            console.log(`accuracy: ${accuracy}`);
+
+
             this.direction.x *= -1  
+            //  implementation of dynamic ball bounce based on 'accuracy'
+            //  this.heading *= (accuracy); 
+            //  this.direction = { x: Math.cos(this.heading), y: Math.sin(this.heading) }
         }
-        if (isCollision(paddleRects[1],ballRect)) {
+        if (isCollision(paddleRects[1], ballRect)) {
             this.direction.x *= -1  
         }
     }
-
-    rect() {
+    /*
+        //when the ball hits either paddle flip the x dir. component
+        if (isCollision(paddleRects[0],ballRect)) {
+            this.direction.x *= -1  }
+        if (isCollision(paddleRects[1],ballRect)) {
+            this.direction.x *= -1  
+            */
+    getRect() {
         return this.ballElem.getBoundingClientRect()
     }
 }
